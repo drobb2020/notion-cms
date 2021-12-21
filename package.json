@@ -8,5 +8,8 @@
   },
   "devDependencies": {
     "vite": "^2.7.0"
+  },
+  "dependencies": {
+    "@notionhq/client": "^0.4.11"
   }
 }
