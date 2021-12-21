@@ -5,20 +5,136 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Notion CMS</title>
     <link rel="icon" href="favicon.ico" />
-    <link rel="stylesheet" href="https://unpkg.com/open-props"/>
-    <link rel="stylesheet" href="https://unpkg.com/open-props/normalize.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/open-props" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/open-props/normalize.min.css"
+    />
+    <style>
+      body {
+        display: grid;
+        place-items: center;
+        background-image: var(--gradient-22);
+      }
+
+      .card-container {
+        display: flex;
+        align-items: start;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--size-fluid-4);
+        margin: var(--size-fluid-4);
+        max-width: 1440px;
+      }
+
+      .card {
+        flex: 0 1 400px;
+        box-shadow: var(--shadow-4);
+        padding: var(--size-fluid-3);
+        border-radius: var(--radius-4);
+        background-color: var(--blue-1);
+        display: grid;
+        gap: var(--size-2);
+      }
+
+      .card__heading {
+        color: var(--blue-6);
+      }
+
+      .card__content {
+        display: grid;
+        gap: var(--size-2);
+        color: #000;
+      }
+
+      .card__btn {
+        background-color: var(--blue-6);
+        color: white;
+        width: max-content;
+        padding: var(--size-2) var(--size-fluid-2);
+        border-radius: var(--radius-4);
+        margin-top: var(--size-fluid-1);
+        box-shadow: var(--shadow-4);
+        transition: all 250ms var(--ease-squish-3);
+      }
+
+      .card__btn:is(:hover, :focus) {
+        text-decoration: none;
+        box-shadow: none;
+        transform: scale(0.95);
+      }
+
+      @media (prefers-color_scheme: dark) {
+        html {
+          --shadow-strength: 5%;
+        }
+        body {
+          background-image: var(--gradient-23);
+        }
+        .card {
+          background-color: var(gray-8);
+        }
+        .card__heading {
+          color: var(--blue-1);
+        }
+        .card__content {
+          color: var(--gray-0);
+        }
+      }
+    </style>
   </head>
   <body>
-    <main class="card-container">
-      <article class="card">
-        <img src="https://doodleipsum.com/300x169/flat?i=ca2314396afed76441fb67a45df7649d" alt="flat doodle" class="card__image">
-        <h2 class="card__heading">Working With Notion</h2>
-        <div class="card__content">
-          <p>I database api modern bundle stateless security engineer f***. Behavior-driven package manager infrastructure yarn hashtable UX first in first out class Edge stand-up. Ecommerce platform open source elixir programmer node_modules lang continuous integration. Greenfield compile observer pattern contribution markup Backbone.js naming things compile.</p>
-        </div>
-        <a href="#" class="card__btn">Check this out</a>
-      </article>
-    </main>
+    <main class="card-container"></main>
+    <script>
+      (function loadSkeletonData() {
+        const skeleton = {
+          html: `<article class="card">
+      <div class="card__image"></div>
+      <h2 class="card__heading"></h2>
+      <div class="card__content">
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+      </div>
+      <a class="card__btn"></a>
+    </article>`,
+          css: `<style>
+          .card__image {
+            width: 100%;
+            height: 240px;
+            background-color: var(--pink-2);
+            border-radius: var(--radius-3);
+          }
+          .card__heading {
+            width: 80%;
+            height: 3.5rem;
+            background-color: var(--pink-4);
+            border-radius: var(--radius-3);
+            margin: 1rem 0 .6rem;
+          }
+          .card__content > p {
+            width: 100%;
+            height: 1.5rem;
+            background-color: var(--pink-2);
+            border-radius: var(--radius-3);
+          }
+          .card__content > p:last-child {
+            width: 70%;
+          }
+          .card__btn {
+            width: 130px;
+            height: 2.8rem;
+          }
+          </style>`,
+        };
+        document.querySelector(".card-container").innerHTML =
+          skeleton.html.repeat(6) + skeleton.css;
+      })();
+    </script>
     <script type="module" src="/main.js"></script>
   </body>
 </html>
